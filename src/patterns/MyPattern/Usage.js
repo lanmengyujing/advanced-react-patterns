@@ -2,16 +2,19 @@ import React from "react";
 import { Counter } from "./Counter";
 import { useCounter } from "./useCounter";
 
+const MAX_COUNT = 10;
 const MyPattern = () => {
-  const { count, handleIncrement, handleDecrement } = useCounter(0);
-  const MAX_COUNT = 10;
-
-  const handleClickIncrement = () => {
-    //Put your custom logic
-    if (count < MAX_COUNT) {
-      handleIncrement();
+    const reducer = (state,action)=>{
+        switch (action.type) {
+            case "decrement":
+              return {
+                count: Math.max(0, state.count - 2) //The decrement delta was changed for 2 (Default is 1)
+              };
+            default:
+              return useCounter.defaultReducer(state, action);
+        }
     }
-  };
+  const { count, handleIncrement, handleDecrement } = useCounter(0, reducer);
 
   return (
     <>
@@ -23,13 +26,13 @@ const MyPattern = () => {
         <Counter.Count max={MAX_COUNT}></Counter.Count>
         <Counter.Increment
           icon={"plus"}
-          onClick={handleClickIncrement}
+          onClick={handleIncrement}
           disabled={count === MAX_COUNT}
         >
           +
         </Counter.Increment>
       </Counter>
-      <button onClick={handleClickIncrement} disabled={count === MAX_COUNT}>
+      <button onClick={handleIncrement} disabled={count === MAX_COUNT}>
         Custom increment btn 1
       </button>
     </>
