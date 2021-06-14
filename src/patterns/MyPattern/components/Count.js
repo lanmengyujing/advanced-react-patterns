@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { useCounterContext } from "../CounterContext";
 
-function Count({ max, count }) {
+function Count({ max }) {
+  const {count} = useCounterContext();
   const hasError = max ? count >= max : false;
 
   return <StyledCount hasError={hasError}>{count}</StyledCount>;

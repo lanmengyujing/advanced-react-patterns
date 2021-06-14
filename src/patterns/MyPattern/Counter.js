@@ -1,36 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { StyledButton } from "./components/styles.js";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {Label} from "./components/Label"
-import {Count} from "./components/Count"
+import { Label } from "./components/Label";
+import { Count } from "./components/Count";
+import { Increment } from "./components/Increment";
+import { Decrement } from "./components/Decrement";
+import { CounterContextProvider } from "./CounterContext";
 
-function Decrement({ icon = "minus",handleDecrement }) {
+const Counter = ({children, initialCount}) => {
+  const [count, setCount] = useState(initialCount);
+
+  const handleDecrement = () => {
+    setCount(Math.max(0, count - 1));
+  };
+
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+
   return (
-    <StyledButton onClick={handleDecrement}>
-      <FontAwesomeIcon icon={icon} color="#17a2b8" />
-    </StyledButton>
+    <CounterContextProvider value={{ count, handleIncrement, handleDecrement }}>
+      <StyledCounter>{children}</StyledCounter>
+    </CounterContextProvider>
   );
-}
-
-
-function Increment({ icon = "plus",handleIncrement }) {
-    return (
-      <StyledButton onClick={handleIncrement}>
-        <FontAwesomeIcon icon={icon} color="#17a2b8" />
-      </StyledButton>
-    );
-}
-
-const Counter = (props)=>{
-    
-    return (
-        <StyledCounter>
-            {props.children}
-        </StyledCounter>
-    );
-}
-
+};
 
 const StyledCounter = styled.div`
   display: inline-flex;
@@ -44,4 +36,4 @@ Counter.Count = Count;
 Counter.Label = Label;
 Counter.Increment = Increment;
 Counter.Decrement = Decrement;
-export {Counter}
+export { Counter };
