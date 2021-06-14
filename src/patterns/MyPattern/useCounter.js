@@ -3,16 +3,16 @@ import { useReducer } from "react";
 function defaultReducer(state, action) {
     switch (action.type) {
       case 'increment':
-        return {count: state.count + 1};
+        return {count: Math.min(state.count + 1, action.payload.max)};
       case 'decrement':
         return {count:  Math.max(0,  state.count - 1)};
       default:
-        throw new Error();
+        throw new Error(`Unhandled action type: ${action.type}`);
     }
   }
 
-export function useCounter(intialeCount=0, reducer = defaultReducer) {
-  const initialState = {count: intialeCount};
+export function useCounter( intial, reducer = defaultReducer) {
+  const initialState = {count: intial.count};
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleDecrement = () => {
@@ -20,7 +20,7 @@ export function useCounter(intialeCount=0, reducer = defaultReducer) {
   };
 
   const handleIncrement = () => {
-    dispatch({type: 'increment'})
+    dispatch({type: 'increment',payload: {max:intial.max}})
   };
 
   return {
@@ -29,5 +29,8 @@ export function useCounter(intialeCount=0, reducer = defaultReducer) {
     handleIncrement,
   };
 }
-
-useCounter.defaultReducer = defaultReducer
+useCounter.reducer = defaultReducer;
+useCounter.types = {
+  increment: "increment",
+  decrement: "decrement"
+};

@@ -6,15 +6,15 @@ const MAX_COUNT = 10;
 const MyPattern = () => {
     const reducer = (state,action)=>{
         switch (action.type) {
-            case "decrement":
+            case useCounter.types.decrement:
               return {
                 count: Math.max(0, state.count - 2) //The decrement delta was changed for 2 (Default is 1)
               };
             default:
-              return useCounter.defaultReducer(state, action);
+              return useCounter.reducer(state, action);
         }
     }
-  const { count, handleIncrement, handleDecrement } = useCounter(0, reducer);
+  const { count, handleIncrement, handleDecrement } = useCounter({count:0, max: MAX_COUNT}, reducer);
 
   return (
     <>
