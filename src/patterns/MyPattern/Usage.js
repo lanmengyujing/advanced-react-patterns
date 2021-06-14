@@ -1,13 +1,18 @@
 import { Counter } from "./Counter";
-import React from "react";
+import React,{useState} from "react";
 
 const MyPattern = () => {
+const [count, setCount] = useState(0);
+
+  const handleChangeCounter = (newCount) => {
+    setCount(newCount);
+  };
   return (
-    <Counter initialCount={0}>
-      <Counter.Decrement>-</Counter.Decrement>
+    <Counter count={count} onChange={handleChangeCounter}>
+      <Counter.Decrement icon={"minus"} >-</Counter.Decrement>
       <Counter.Label>Counter</Counter.Label>
-      <Counter.Count max={1000} ></Counter.Count>
-      <Counter.Increment>+</Counter.Increment>
+      <Counter.Count max={5} ></Counter.Count>
+      <Counter.Increment icon={"plus"}>+</Counter.Increment>
     </Counter>     
   );
 };

@@ -6,19 +6,9 @@ import { Increment } from "./components/Increment";
 import { Decrement } from "./components/Decrement";
 import { CounterContextProvider } from "./CounterContext";
 
-const Counter = ({children, initialCount}) => {
-  const [count, setCount] = useState(initialCount);
-
-  const handleDecrement = () => {
-    setCount(Math.max(0, count - 1));
-  };
-
-  const handleIncrement = () => {
-    setCount(count + 1);
-  };
-
+const Counter = ({children, count, onChange}) => {
   return (
-    <CounterContextProvider value={{ count, handleIncrement, handleDecrement }}>
+    <CounterContextProvider value={{ count, onChange }}>
       <StyledCounter>{children}</StyledCounter>
     </CounterContextProvider>
   );
