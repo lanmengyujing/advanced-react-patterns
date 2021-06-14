@@ -8,7 +8,7 @@ const [count, setCount] = useState(0);
     setCount(newCount);
   };
   return (
-    <Counter count={count} onChange={handleChangeCounter}>
+    <Counter value={count} onChange={handleChangeCounter}>
       <Counter.Decrement icon={"minus"} >-</Counter.Decrement>
       <Counter.Label>Counter</Counter.Label>
       <Counter.Count max={5} ></Counter.Count>
