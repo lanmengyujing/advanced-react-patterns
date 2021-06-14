@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCounterContext } from "../CounterContext";
 
 function Decrement({ icon = "minus" }) {
-  const { count, onChange } = useCounterContext();
+  const { handleDecrement } = useCounterContext();
   return (
-    <StyledButton onClick={()=>onChange(Math.max(0, count - 1))}>
+    <StyledButton onClick={handleDecrement}>
       <FontAwesomeIcon icon={icon} color="#17a2b8" />
     </StyledButton>
   );

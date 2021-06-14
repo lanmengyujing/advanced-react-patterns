@@ -7,8 +7,17 @@ import { Decrement } from "./components/Decrement";
 import { CounterContextProvider } from "./CounterContext";
 
 const Counter = ({children, count, onChange}) => {
+
+  const handleDecrement = () => {
+    onChange(Math.max(0, count - 1));
+  };
+
+  const handleIncrement = () => {
+    onChange(count + 1);
+  };
+
   return (
-    <CounterContextProvider value={{ count, onChange }}>
+    <CounterContextProvider value={{ count, handleDecrement, handleIncrement }}>
       <StyledCounter>{children}</StyledCounter>
     </CounterContextProvider>
   );

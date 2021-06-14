@@ -4,9 +4,9 @@ import { StyledButton } from "./styles.js";
 import { useCounterContext } from "../CounterContext";
 
 function Increment({ icon = "plus" }) {
-  const { count, onChange } = useCounterContext();
+  const { handleIncrement } = useCounterContext();
   return (
-    <StyledButton onClick={()=>onChange(count + 1)}>
+    <StyledButton onClick={handleIncrement}>
       <FontAwesomeIcon icon={icon} color="#17a2b8" />
     </StyledButton>
   );
