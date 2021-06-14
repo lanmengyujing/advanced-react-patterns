@@ -1,12 +1,10 @@
 import React from "react";
 import { StyledButton } from "./styles.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useCounterContext } from "../CounterContext";
 
-function Decrement({ icon = "minus" }) {
-  const { handleDecrement } = useCounterContext();
+function Decrement({ icon = "minus", onClick }) {
   return (
-    <StyledButton onClick={handleDecrement}>
+    <StyledButton onClick={onClick }>
       <FontAwesomeIcon icon={icon} color="#17a2b8" />
     </StyledButton>
   );

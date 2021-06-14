@@ -6,26 +6,9 @@ import { Increment } from "./components/Increment";
 import { Decrement } from "./components/Decrement";
 import { CounterContextProvider } from "./CounterContext";
 
-const Counter = ({children, value=null, initialValue=0, onChange}) => {
-  const [count, setCount] = useState(initialValue);
-
-  const isControlled = value!==null && !! onChange;
-  const getCount = () => (isControlled ? value : count);
-
-  const handleCountChange = (newValue) =>{
-     isControlled? onChange(newValue): setCount(newValue);
-  }
-
-  const handleDecrement = () => {
-    handleCountChange(Math.max(0, getCount()  - 1));
-  };
-
-  const handleIncrement = () => {
-    handleCountChange(getCount()  + 1);
-  };
-
+const Counter = ({children, value}) => {
   return (
-    <CounterContextProvider value={{ count: getCount(), handleDecrement, handleIncrement }}>
+    <CounterContextProvider value={{ count: value }}>
       <StyledCounter>{children}</StyledCounter>
     </CounterContextProvider>
   );
