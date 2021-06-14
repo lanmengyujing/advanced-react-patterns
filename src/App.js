@@ -5,6 +5,7 @@ import { Usage as ControlProps } from "./patterns/control-props/Usage";
 import { Usage as CustomHooks } from "./patterns/custom-hooks/Usage";
 import { Usage as PropsGetters } from "./patterns/props-getters/Usage";
 import { Usage as StateReducer } from "./patterns/state-reducer/Usage";
+import { MyPattern } from "./patterns/MyPattern/Usage";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -30,6 +31,11 @@ export default function App() {
       <StyledTitleContainer>
         <h1>Advanced React Pattern</h1>
       </StyledTitleContainer>
+
+      <StyledPatternContainer>
+        <h2>My pattern</h2>
+        <MyPattern/>
+      </StyledPatternContainer>
 
       <StyledPatternContainer>
         <h2>Compound component pattern</h2>
