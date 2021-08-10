@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import styled from "styled-components";
 import { AccordionButton } from "./components/AccordionButton";
 import { AccordionContents } from "./components/AccordionContents";
+import { AccordionItem } from "./components/AccordionItem";
 import { CounterProvider } from "./useAccordianContext";
 
 export const Accordion = ({ children, openIndexes, onChange }) => {
@@ -22,3 +22,4 @@ export const Accordion = ({ children, openIndexes, onChange }) => {
 
 Accordion.AccordionButton = AccordionButton;
 Accordion.AccordionContents = AccordionContents;
+Accordion.AccordionItem = AccordionItem;

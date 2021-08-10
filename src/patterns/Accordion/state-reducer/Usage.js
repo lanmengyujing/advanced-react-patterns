@@ -60,7 +60,7 @@ function Usage() {
       <Accordion openIndexes={openIndexes} onChange={onChange}>
         {items.map((item, index) => {
           return (
-            <div key={index}>
+            <Accordion.AccordionItem key={index} direction="horizontal">
               <Accordion.AccordionButton
                 isOpen={openIndexes.includes(index)}
                 onClick={() => handleItemClick(index)}
@@ -71,7 +71,7 @@ function Usage() {
               <Accordion.AccordionContents isOpen={openIndexes.includes(index)}>
                 {item.contents}
               </Accordion.AccordionContents>
-            </div>
+            </Accordion.AccordionItem>
           );
         })}
       </Accordion>
