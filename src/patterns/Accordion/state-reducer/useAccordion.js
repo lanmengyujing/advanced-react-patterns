@@ -21,7 +21,7 @@ const internalReducer = (state, { type, payload }) => {
   }
 };
 
-export const useAccordion = ({ initial }, reducer = internalReducer) => {
+const useAccordion = ({ initial }, reducer = internalReducer) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const openIndexes = state.openIndexes;
@@ -37,7 +37,6 @@ export const useAccordion = ({ initial }, reducer = internalReducer) => {
       },
     };
     dispatch(action);
-    console.log(state.openIndexes, "----index",state,index);
   };
 
   return {
@@ -45,3 +44,7 @@ export const useAccordion = ({ initial }, reducer = internalReducer) => {
     handleItemClick,
   };
 };
+
+useAccordion.reducer = internalReducer;
+
+export {useAccordion}

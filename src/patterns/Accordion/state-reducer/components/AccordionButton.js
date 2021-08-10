@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { useAccordionContext } from "../useAccordianContext";
 
 export const AccordionButton = ({ children, isOpen, onClick }) => {
+  const { openIndexes } = useAccordionContext();
+  console.log(openIndexes);
   return (
     <AccordionButtonContainer isOpen={isOpen} onClick={onClick}>
       Accordion Titile {children}

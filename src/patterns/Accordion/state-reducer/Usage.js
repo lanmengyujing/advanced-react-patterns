@@ -42,7 +42,7 @@ function Usage() {
       case "opening":
         return { ...action, openIndexes: action.openIndexes.slice(-1) };
       default:
-        return state;
+        return useAccordion.reducer(state, action);
     }
   };
 
@@ -51,24 +51,30 @@ function Usage() {
     // singleReducer
   );
 
+  const onChange = (openIndexes) => {
+    console.log("all open indexes now", openIndexes);
+  };
+
   return (
     <StyledContainer>
-      {items.map((item, index) => {
-        return (
-          <Accordion key={index} openIndexes={openIndexes}>
-            <Accordion.AccordionButton
-              isOpen={openIndexes.includes(index)}
-              onClick={() => handleItemClick(index)}
-            >
-              {item.title}{" "}
-              <span>{openIndexes.includes(index) ? "👇" : "👈"}</span>
-            </Accordion.AccordionButton>
-            <Accordion.AccordionContents isOpen={openIndexes.includes(index)}>
-              {item.contents}
-            </Accordion.AccordionContents>
-          </Accordion>
-        );
-      })}
+      <Accordion openIndexes={openIndexes} onChange={onChange}>
+        {items.map((item, index) => {
+          return (
+            <div key={index}>
+              <Accordion.AccordionButton
+                isOpen={openIndexes.includes(index)}
+                onClick={() => handleItemClick(index)}
+              >
+                {item.title}{" "}
+                <span>{openIndexes.includes(index) ? "👇" : "👈"}</span>
+              </Accordion.AccordionButton>
+              <Accordion.AccordionContents isOpen={openIndexes.includes(index)}>
+                {item.contents}
+              </Accordion.AccordionContents>
+            </div>
+          );
+        })}
+      </Accordion>
     </StyledContainer>
   );
 }
