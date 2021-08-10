@@ -5,6 +5,7 @@ import { Usage as ControlProps } from "./patterns/control-props/Usage";
 import { Usage as CustomHooks } from "./patterns/custom-hooks/Usage";
 import { Usage as PropsGetters } from "./patterns/props-getters/Usage";
 import { Usage as StateReducer } from "./patterns/state-reducer/Usage";
+import { Usage as CustomAccordion } from "./patterns/Accordion/state-reducer/Usage";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -13,7 +14,7 @@ import {
   faPlusSquare,
   faMinus,
   faMinusCircle,
-  faMinusSquare
+  faMinusSquare,
 } from "@fortawesome/free-solid-svg-icons";
 library.add(
   faPlus,
@@ -30,6 +31,10 @@ export default function App() {
       <StyledTitleContainer>
         <h1>Advanced React Pattern</h1>
       </StyledTitleContainer>
+
+      <StyledPatternContainer>
+        <CustomAccordion></CustomAccordion>
+      </StyledPatternContainer>
 
       <StyledPatternContainer>
         <h2>Compound component pattern</h2>
