@@ -24,7 +24,6 @@ const AccordionButtonContainer = styled.button`
   outline: none;
   cursor: pointer;
   ${({ isOpen }) => {
-    console.log(isOpen);
     if (isOpen) {
       return `background-color: rgba(255, 255, 255, 0.2);`;
     } else {

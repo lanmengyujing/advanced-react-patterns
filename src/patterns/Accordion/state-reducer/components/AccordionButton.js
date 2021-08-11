@@ -4,7 +4,6 @@ import { useAccordionContext } from "../useAccordianContext";
 
 export const AccordionButton = ({ children, isOpen, onClick }) => {
   const { openIndexes } = useAccordionContext();
-  console.log(openIndexes);
   return (
     <AccordionButtonContainer isOpen={isOpen} onClick={onClick}>
       Accordion Titile {children}
@@ -20,7 +19,6 @@ const AccordionButtonContainer = styled.button`
   outline: none;
   cursor: pointer;
   ${({ isOpen }) => {
-    console.log(isOpen);
     if (isOpen) {
       return `background-color: rgba(255, 255, 255, 0.2);`;
     } else {
