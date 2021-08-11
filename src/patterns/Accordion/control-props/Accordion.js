@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { AccordionButton } from "./components/AccordionButton";
 import { AccordionContents } from "./components/AccordionContents";
 import { AccordionItem } from "./components/AccordionItem";
-import { CounterProvider } from "./useAccordianContext";
+import { AccordionProvider } from "./useAccordianContext";
 
 export const Accordion = ({ children, onChange, value = null, onControledChange }) => {
   const isControlled = value != null && !!onControledChange;
@@ -34,9 +34,9 @@ export const Accordion = ({ children, onChange, value = null, onControledChange 
   }, [onChange, openIndexes, isControlled]);
 
   return (
-    <CounterProvider value={{ openIndexes: getOpenIndexes(), handleAccordionTitleClick }}>
+    <AccordionProvider value={{ openIndexes: getOpenIndexes(), handleAccordionTitleClick }}>
       <div>{children}</div>
-    </CounterProvider>
+    </AccordionProvider>
   );
 };
 

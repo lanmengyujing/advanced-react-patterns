@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { AccordionButton } from "./components/AccordionButton";
 import { AccordionContents } from "./components/AccordionContents";
 import { AccordionItem } from "./components/AccordionItem";
-import { CounterProvider } from "./useAccordianContext";
+import { AccordionProvider } from "./useAccordianContext";
 
 export const Accordion = ({ children, openIndexes, onChange }) => {
   const firstMounded = useRef(true);
@@ -14,9 +14,9 @@ export const Accordion = ({ children, openIndexes, onChange }) => {
   }, [onChange, openIndexes]);
 
   return (
-    <CounterProvider value={{ openIndexes }}>
+    <AccordionProvider value={{ openIndexes }}>
       <div>{children}</div>
-    </CounterProvider>
+    </AccordionProvider>
   );
 };
 
