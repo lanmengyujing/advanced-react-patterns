@@ -35,14 +35,17 @@ export default function App() {
       </StyledTitleContainer>
 
       <StyledPatternContainer>
+        <h2>Compound component pattern</h2>
         <CompoundComponentAccordion></CompoundComponentAccordion>
       </StyledPatternContainer>
 
       <StyledPatternContainer>
+        <h2>Control props pattern</h2>
         <ControlPropsAccordion></ControlPropsAccordion>
       </StyledPatternContainer>
 
       <StyledPatternContainer>
+        <h2>State reducer Pattern</h2>
         <CustomAccordion></CustomAccordion>
       </StyledPatternContainer>
 
