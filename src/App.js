@@ -5,6 +5,7 @@ import { Usage as ControlProps } from "./patterns/control-props/Usage";
 import { Usage as CustomHooks } from "./patterns/custom-hooks/Usage";
 import { Usage as PropsGetters } from "./patterns/props-getters/Usage";
 import { Usage as StateReducer } from "./patterns/state-reducer/Usage";
+import { Usage as CompoundComponentAccordion } from "./patterns/Accordion/compound-component/Usage";
 import { Usage as CustomAccordion } from "./patterns/Accordion/state-reducer/Usage";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -32,6 +33,10 @@ export default function App() {
         <h1>Advanced React Pattern</h1>
       </StyledTitleContainer>
 
+      <StyledPatternContainer>
+        <CompoundComponentAccordion></CompoundComponentAccordion>
+      </StyledPatternContainer>
+      
       <StyledPatternContainer>
         <CustomAccordion></CustomAccordion>
       </StyledPatternContainer>
