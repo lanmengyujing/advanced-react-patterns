@@ -40,15 +40,15 @@ function Usage() {
   const singleReducer = (state, action) => {
     switch (action.type) {
       case "opening":
-        return { ...action, openIndexes: action.openIndexes.slice(-1) };
+        return { ...action, openIndexes: action.payload.openIndexes.slice(-1) };
       default:
         return useAccordion.reducer(state, action);
     }
   };
 
   const { openIndexes, handleItemClick } = useAccordion(
-    // { openIndexes: [1] }
-    // singleReducer
+    { openIndexes: [1] },
+    singleReducer
   );
 
   const onChange = (openIndexes) => {
