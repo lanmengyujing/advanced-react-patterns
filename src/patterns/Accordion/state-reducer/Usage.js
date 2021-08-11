@@ -47,7 +47,7 @@ function Usage() {
   };
 
   const { openIndexes, handleItemClick } = useAccordion(
-    { openIndex: 0 }
+    // { openIndexes: [1] }
     // singleReducer
   );
 

@@ -1,6 +1,6 @@
 import { useReducer } from "react";
 
-const initialState = {
+const defaultState = {
   openIndexes: [],
 };
 
@@ -21,10 +21,13 @@ const internalReducer = (state, { type, payload }) => {
   }
 };
 
-const useAccordion = ({ initial }, reducer = internalReducer) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  const openIndexes = state.openIndexes;
+const useAccordion = (
+    initialState = defaultState,
+  reducer = internalReducer
+) => {
+  const [state, dispatch] = useReducer(reducer, {
+    openIndexes: initialState.openIndexes,
+  });
 
   const handleItemClick = (index) => {
     const closing = state.openIndexes.includes(index);
@@ -40,11 +43,11 @@ const useAccordion = ({ initial }, reducer = internalReducer) => {
   };
 
   return {
-    openIndexes,
+    openIndexes: state.openIndexes,
     handleItemClick,
   };
 };
 
 useAccordion.reducer = internalReducer;
 
-export {useAccordion}
+export { useAccordion };
